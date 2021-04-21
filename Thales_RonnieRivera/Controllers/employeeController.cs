@@ -20,13 +20,29 @@ namespace Thales_RonnieRivera.Controllers
         public ActionResult Index()
         {
             List<Employee> employee = new List<Employee>();
-            string URL = "http://dummy.restapiexample.com/api/v1/employees";
-            _employeeViewModel Jsonemployees = GetEmployees(URL);
+            _employeeViewModel Jsonemployees = GetEmployees();
             if (Jsonemployees.status == "success")
             {
                 employee = Jsonemployees.data;
             }
             else{
+                ModelState.AddModelError("Error", Jsonemployees.status);
+                return View(employee);
+            }
+
+            return View(employee);
+        }
+
+        public ActionResult getAllEmployees()
+        {
+            List<Employee> employee = new List<Employee>();
+            _employeeViewModel Jsonemployees = GetEmployees();
+            if (Jsonemployees.status == "success")
+            {
+                employee = Jsonemployees.data;
+            }
+            else
+            {
                 ModelState.AddModelError("Error", Jsonemployees.status);
                 return View(employee);
             }
@@ -60,9 +76,9 @@ namespace Thales_RonnieRivera.Controllers
         }
 
 
-        public _employeeViewModel GetEmployees(string path)
+        public _employeeViewModel GetEmployees()
         {
-            
+            string path = "http://dummy.restapiexample.com/api/v1/employees";
             try
             {
                 WebRequest webRequest = WebRequest.Create(path);
@@ -110,5 +126,6 @@ namespace Thales_RonnieRivera.Controllers
 
         }
 
+         
     }
 }

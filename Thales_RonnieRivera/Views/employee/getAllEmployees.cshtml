@@ -1,0 +1,68 @@
+﻿@model IEnumerable<Thales_RonnieRivera.Models.Employee>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>getAllEmployees</title>
+</head>
+<body>
+    <p>
+        @Html.ValidationMessage("Error")
+    </p>
+
+    @if (ViewData.ModelState.IsValid)
+    {
+        <h4>Employee</h4>
+        <hr />
+
+        <table class="table">
+            <tr>
+                <th>
+                    Employee Name
+                </th>
+                <th>
+                    Employee Salary
+                </th>
+                <th>
+                    Anual Salary
+                </th>
+                <th>
+                    Employee Age
+                </th>
+                <th>
+                    Employee Image
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.employee_name)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.employee_salary)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.anual_salary)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.employee_age)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.profile_image)
+                    </td>
+                </tr>
+            }
+
+        </table>
+    }
+</body>
+</html>
