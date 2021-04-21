@@ -1,0 +1,71 @@
+﻿@model Thales_RonnieRivera.Models.Employee
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div style="margin-top:1%">
+        <p>
+            @Html.ValidationMessage("Error")
+        </p>
+
+        @if (ViewData.ModelState.IsValid)
+        {
+            <h4>Employee</h4>
+            <hr />
+
+            <table class="table">
+                <tr>
+                    <th>
+                        Employee Name
+                    </th>
+                    <th>
+                        Employee Salary
+                    </th>
+                    <th>
+                        Anual Salary
+                    </th>
+                    <th>
+                        Employee Age
+                    </th>
+                    <th>
+                        Employee Image
+                    </th>
+                    <th></th>
+                </tr>
+
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(model => model.employee_name)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.employee_salary)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.anual_salary)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.employee_age)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(model => model.profile_image)
+                        </td>
+                    </tr>
+
+            </table>
+
+        }
+
+
+    </div>
+
+</body>
+</html>
